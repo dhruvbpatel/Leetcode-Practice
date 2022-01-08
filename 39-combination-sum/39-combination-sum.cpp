@@ -15,12 +15,12 @@ public:
         
         // int curr = arr[idx];
         
-        if(arr[idx]<=target){
+        if(arr[idx]<=target){ // if curr element is less than target
             
-            temp.push_back(arr[idx]);
+            temp.push_back(arr[idx]); // push in temp
             // target = target-arr[idx];
-            solve(arr,idx,target-arr[idx],ans,temp);
-            temp.pop_back();
+            solve(arr,idx,target-arr[idx],ans,temp); // decrease target and dont increase idx as we can reuse
+            temp.pop_back(); 
             
         }
         // idx+=1;
