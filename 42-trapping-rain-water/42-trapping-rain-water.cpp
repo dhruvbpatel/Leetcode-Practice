@@ -15,12 +15,34 @@ public:
         
         while(l<=r){
             
-            if(arr[l]<=arr[r]){
+            if(arr[l]<=arr[r]){  
                 
                 if(arr[l]>=leftmax) leftmax = arr[l];
                 
+                // if curr element is max of all left side so no water will be stored here
+                 // as no left boundary exists for curr element
+                
                 else{
-                    ans+= leftmax - arr[l];
+                    
+                    
+                    /*
+                    
+                    how can we say that we have the ans:
+                   1)  because here our curr arr[l] is not maximum if it was then we wont be in this else
+                    thus we gaurntee that we have a left wall greater than curr, i.e leftmaxl
+                    
+                    2) now for right boundary we are coming to this position only after we hve 
+                    checked that arr[l]<=arr[r]
+                    thus there is atleast one element that is greater than equal curr so right boundary 
+                    exists
+                    
+                    
+                    */
+                    
+                    ans+= leftmax - arr[l]; 
+                    
+                    
+                    
                 }
                 
                 l++;
@@ -29,9 +51,18 @@ public:
                 // when arr[r]<arr[l];
                 
                 if(arr[r]>=rightmax){
-                    rightmax = arr[r];
+                    
+                    rightmax = arr[r];  // same intuition for right side 
+                    // if right max is smaller then there is not bigger right wall for current element
+                    // so water cant be stored here
+                    
                 }else{
                     ans+= rightmax-arr[r];
+                    
+                    // if we reach in this else mens our left pointer is greater than right and
+                    // right is also not right max so we have both walls
+                    // so we will be having water stored here;
+                    
                 }
                 
                 r--;
