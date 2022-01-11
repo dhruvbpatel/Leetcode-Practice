@@ -22,6 +22,27 @@ public:
         return true;  // if all color is done ,it is bipartite
     }
     
+    bool dfs(int node,vector<int>& color,vector<vector<int>>& graph){
+        
+        
+        if(color[node]==-1) color[node]=1;
+        
+        for(auto it:graph[node]){
+            if(color[it]==-1){
+                color[it] = 1-color[node];
+                if(!dfs(it,color,graph)){
+                    return false;
+                }
+                
+            }else if(color[it]==color[node]){
+                return false;
+            }
+        }
+        
+        return true;
+        
+        
+    }
     
     bool isBipartite(vector<vector<int>>& graph) {
         
@@ -31,9 +52,18 @@ public:
         
         for(int i=0;i<n;i++){
             if(color[i]==-1){ // if uncolored
-                if(!isBipartite(i,color,graph)){  // bfs and color it and check for cycle
-                    return false; 
+                
+                //bfs
+                // if(!isBipartite(i,color,graph)){  // bfs and color it and check for cycle
+                //     return false; 
+                // }
+                
+                //dfs
+                if(!dfs(i,color,graph)){
+                    return false;
                 }
+                
+                
             }
         }
         
