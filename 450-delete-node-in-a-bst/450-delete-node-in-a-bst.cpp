@@ -44,17 +44,17 @@ public:
     }
     
     TreeNode* helper(TreeNode* root){
-        if(root->left==NULL) return root->right;
-        if(root->right==NULL) return root->left;
+        if(root->left==NULL) return root->right; // if no left then return right
+        if(root->right==NULL) return root->left; // if no right return left side
         
-        TreeNode* rightchild = root->right;
+        TreeNode* rightchild = root->right;  // take rightside and put in right of leftside's last right
         TreeNode* lastRightInLeft = findLastRight(root->left);
         lastRightInLeft->right  = rightchild;
         return root->left;
         
     }
     
-    TreeNode* findLastRight(TreeNode* root){
+    TreeNode* findLastRight(TreeNode* root){ // search for last right node in left side
         if(root->right == NULL){
             return root;
         }
