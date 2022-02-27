@@ -26,7 +26,7 @@ class Trie {
     
 public:
     Trie() {
-        root = new Node();   
+        root = new Node();   //initialize
         // root->cp=0;
         // root->ew=0;
     }
@@ -35,16 +35,16 @@ public:
         Node* node = root;
         
         for(int i=0;i<word.length();i++){
-            if(!node->containsKey(word[i])){
+            if(!node->containsKey(word[i])){ // if char is not present, insert
                 node->put(word[i],new Node());
             }
-            node = node->get(word[i]);
+            node = node->get(word[i]); // move to next node
             
-            if(i==word.length()-1){
-                node->ew+=1;
-                node->cp+=1;
+            if(i==word.length()-1){ // if end of word
+                node->ew+=1;  // end with ++
+                node->cp+=1; // current prefix ++;
             }else{
-                node->cp+=1;
+                node->cp+=1; // if not end of word , cp++;
             }
         }
     }
@@ -53,14 +53,14 @@ public:
         Node* node = root;
         
         for(int i=0;i<word.length();i++){
-            if(node->containsKey(word[i])){
-                node = node->get(word[i]);
-            }else{
-                return 0;
+            if(node->containsKey(word[i])){  // if word char is present in node
+                node = node->get(word[i]);  // move to next node
+            }else{  // if not present means word is not present
+                return 0; 
             }
         }
         
-        return node->ew;
+        return node->ew;  // at the end return end with counter
         
     }
     
@@ -84,10 +84,10 @@ public:
         for(int i=0;i<word.length();i++){
             if(node->containsKey(word[i])){
                node=node->get(word[i]);
-                node->cp-=1;
+                node->cp-=1;  // iterate through all word char and decrease cp;
             }
         }
-        node->ew-=1;
+        node->ew-=1; // at the end decrease end with counter
         
     }
 };
