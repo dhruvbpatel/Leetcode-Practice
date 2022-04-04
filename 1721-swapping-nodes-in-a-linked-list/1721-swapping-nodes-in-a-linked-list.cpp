@@ -10,58 +10,32 @@
  */
 class Solution {
 public:
-    
-    int len(ListNode* head){
-        int count = 0;
-        ListNode* temp = head;
-        
-        while(temp!=NULL){
-            temp = temp->next;
-            count++;
-        }
-        
-        return count;
-    }
-    
     ListNode* swapNodes(ListNode* head, int k) {
         
-        if(!head) return NULL;
+        ListNode* curr = head;
+        ListNode* end = NULL;
+        ListNode* front = NULL;
         
-        int n = len(head);
+        int l = 0;
         
-        if(n%2==1 and k==(n/2)+1) return head;
-                
-        ListNode* l=head;
-        ListNode* r = head;
-        
-        int lcount = k-1;
-        int rcount = n-k;
-        
-        while(lcount and rcount){
-            l = l->next;
-            r = r->next;
+        while(curr){ // iterate curr node
+            l++;
             
-            lcount--;
-            rcount--;
+            if(end!=NULL){
+                end = end->next;  // itearate end as well until not null
+            }
+            
+            // end node would be k position behind when curr node reached end, i.e kth position from end;
+            
+            if(l == k){  // if lenght ==k we have reached front node, mark front and reset end
+                front = curr;
+                end = head;
+            }
+            
+            curr = curr->next;  // increase curr at each step;
         }
         
-        while(lcount){
-            l = l->next;
-            // r = r->next;
-            lcount--;
-        }
-        
-        while(rcount){
-            // l = l->next;
-            r = r->next;
-            rcount--;
-        }
-        
-        int temp = l->val;
-        l->val = r->val;
-        r->val = temp;
-        
-        
+        swap(front->val,end->val); // swap val at end
         return head;
     }
 };
