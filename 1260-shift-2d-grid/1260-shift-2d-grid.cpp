@@ -20,8 +20,8 @@ public:
                 
                 int newidx = ((i*n+j)+k )%(n*m);  // formula is row*n + col; 
                 
-                int new_r = newidx/n;
-                int new_c = newidx%n;
+                int new_r = newidx/n;  // 1d array to equivalent row;
+                int new_c = newidx%n;  // 1d array to equivalent col;
                 
                                
                 ans[new_r][new_c] = grid[i][j];
