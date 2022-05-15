@@ -26,7 +26,8 @@ class Solution:
         fast = head
         slow = head
         
-        while(fast.next and fast.next.next):
+        # if fast reaches last or second last
+        while(fast.next!=None and fast.next.next!=None):
             slow = slow.next
             fast = fast.next.next
         
@@ -36,18 +37,26 @@ class Solution:
         second_start = self.reverse(slow.next)
         
         p1 = head
-        p2 = second_start
+        p2 = second_start # p2's end is not pointing to null, so linkedlist is broken in a sense
         
-        ans = True
+        # ans = True
         
-        while(ans and p2!=None):
+        while(p2 is not None):
             if(p1.val!=p2.val):
                 return False
+            
             p1 = p1.next
             p2 = p2.next
         
         
-        # slow.next = self.reverse(second_start)
+        # while(ans and p2!=None):
+        #     if(p1.val!=p2.val):
+        #         return False
+        #     p1 = p1.next
+        #     p2 = p2.next
+        
+        
+        slow.next = self.reverse(second_start)
         
         return True
         
