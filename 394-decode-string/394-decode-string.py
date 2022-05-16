@@ -4,6 +4,7 @@ class Solution:
         ans = ""
         
         for i in range(len(s)):
+            
             ## if not closing bracket add in stack
             if s[i]!="]":                  
                 stack.append(s[i])
@@ -22,8 +23,10 @@ class Solution:
                 while stack and stack[-1].isdigit():
                     val = stack.pop()+val 
                 
+                # add current result multiplied in stack again
                 stack.append(int(val)*substr)
                 
+        # print(stack)
         return "".join(stack)
                 
                 
