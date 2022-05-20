@@ -7,24 +7,24 @@
 class Solution:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
         
-        if root is None:
-            return None
-        
-        q = []
         ans = []
         
-        q.append(root)
+        q = []
         
+        if(root):
+            q.append(root)
+            
         while(len(q)!=0):
             
-            s = len(q)
+            n = len(q)
             
-            for i in range(s):
+            
+            for i in range(n):
                 
                 curr = q[0]
                 q.pop(0)
                 
-                if(i==s-1):
+                if i==n-1:
                     ans.append(curr.val)
                 
                 if(curr.left):
@@ -33,5 +33,5 @@ class Solution:
                 if(curr.right):
                     q.append(curr.right)
         
-        return ans
         
+        return ans
