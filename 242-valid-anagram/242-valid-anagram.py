@@ -1,24 +1,19 @@
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
         
+        if len(s)!=len(t):
+            return False
+        
         d = defaultdict(int)
         
-        for i in s:
-            d[i]+=1
-        
-        for i in t:
-            if i in d.keys():
-                d[i]-=1
-            else:
-                d[i]=1
-    
-        flag = True
+        for i in range(len(s)):
+            d[s[i]]+=1
+            d[t[i]]-=1
         
         for k,v in d.items():
-            
             if v!=0:
-                flag = False
+                return False
         
-        return flag
+        return True
                 
             
