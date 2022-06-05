@@ -11,9 +11,7 @@ class Solution:
         for r in range(9):
             for c in range(9):
                 
-                if board[r][c]==".":
-                    continue
-                else:
+                if board[r][c]!=".":
                     
                     # if curr value in any row,col or square  means duplicate so false
                     if(board[r][c] in rows[r] or
