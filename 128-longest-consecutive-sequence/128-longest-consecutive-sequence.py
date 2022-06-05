@@ -8,44 +8,30 @@ class Solution:
         // if not then we have arrived at smallest number in possible sequence
         // then untill num++ is not in mp , increase val and check if in mp
         // also do count ,and max cout will be ans
-        
-        
-        
-        
+                
         """
         
         
-        n = len(nums)
-        
-        if n==1 or n==0:
-            return n
-        
-        mp = defaultdict(int)
-        
-        for ele in nums:
-            mp[ele]+=1
-        
+        st = set(nums)
         ans = 0
         
-        for ele in nums:
+        
+        for n in nums:
             
-            if mp[ele-1]>0:
+            if n-1 in st: #not smallest number so continue
                 continue
             else:
                 
-                # curr = curr+1
-                count = 0
-                curr = ele
+                count = 1
                 
-                while(mp[curr]!=0):
-                    
+                while(n+count in st):
                     count+=1
-                    curr+=1
                     
                 ans = max(count,ans)
-        
         return ans
-                    
+
+                
+                
                 
 
         
