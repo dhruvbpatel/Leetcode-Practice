@@ -43,7 +43,7 @@ class Solution:
             temp = []
             
             for l in d[v].keys():
-                # d[v][l].sort()
+                # d[v][l].sort() # only change is no sort required
                 temp.extend(d[v][l])
             
             ans.append(temp)
