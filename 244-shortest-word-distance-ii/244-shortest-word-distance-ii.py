@@ -10,8 +10,8 @@ class WordDistance:
             
             if self.mp.get(words[i]) is None:
                 self.mp[words[i]] = [i]
-            
-            self.mp[words[i]] = self.mp[words[i]]+[i] ## append index in mp
+            else:
+                self.mp[words[i]] = self.mp[words[i]]+[i] ## append index in mp
 
     def shortest(self, word1: str, word2: str) -> int:
         
@@ -25,6 +25,7 @@ class WordDistance:
                 
                 ans = min(ans,abs(i-j))
         
+        # print(self.mp)
         return ans
                 
                 
