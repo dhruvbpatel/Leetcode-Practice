@@ -1,23 +1,27 @@
 class Solution:
     def maximumUnits(self, boxTypes: List[List[int]], trucksize: int) -> int:
         
-        boxTypes = sorted(boxTypes,key=lambda x:x[1],reverse=True)
-        print(boxTypes)
-        n = len(boxTypes)
+        bt = sorted(boxTypes,key = lambda x:x[1],reverse=True)
+        # print(bt)
+        ans = 0
         idx = 0
         
-        ans = 0
-        
-        while(trucksize>0 and idx!=n):
+        while idx<len(bt) and trucksize!=0:
             
-            if(boxTypes[idx][0]<=trucksize):
-                ans+=(boxTypes[idx][0]*boxTypes[idx][1])
-                trucksize-=boxTypes[idx][0]
+            if bt[idx][0]<=trucksize:
+                ans += (bt[idx][0]*bt[idx][1])
+                trucksize-=bt[idx][0]
+            
             else:
+                ans += trucksize*bt[idx][1]
+                break
                 
-                ans+=trucksize*boxTypes[idx][1];
-                trucksize-=trucksize
+            idx+=1
+        return ans
             
-            idx+=1;
             
-        return ans;
+            
+        
+        
+        
+        
