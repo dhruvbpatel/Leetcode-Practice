@@ -6,16 +6,16 @@ class Solution:
         
         length = 1
         
-        up = None
+        up = None #initially it can be anything increasing or decreasing
         
         for i in range(1,len(nums)):
             
-            if nums[i]>nums[i-1] and up!=True:
+            if nums[i]>nums[i-1] and up!=True:  # increasing seq and up is False then wiggle is there, add 
                 length+=1
                 up = True
             
-            if nums[i]<nums[i-1] and up!=False:
+            elif nums[i]<nums[i-1] and up!=False: #if decreasing seq and up is True then wiggle is there , add
                 length+=1
                 up = False
         
-        return length
+        return length 
