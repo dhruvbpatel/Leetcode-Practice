@@ -1,40 +1,35 @@
 class Solution:
-    def search(self, arr: List[int], target: int) -> int:
+    def search(self, nums: List[int], target: int) -> int:
         
-        if len(arr)==1:
-            if arr[0]==target:
-                return 0
-            else:
-                return -1
+        if len(nums)==1:
+            return 0 if nums[0]==target else -1
         
         l = 0
-        r = len(arr)-1
+        r = len(nums)-1
         
         
         while l<=r:
             
             mid = (l+r)//2
-            # print(mid)
             
-            if arr[mid]==target:
+            if nums[mid]==target:
                 return mid
             
-            if arr[l]<=arr[mid]:
-                # left part sorted
-                if target > arr[mid] or target<arr[l]:
+            
+            if nums[l]<=nums[mid]:
+                # middle belongs to left sorted part
+                if target > nums[mid] or target<nums[l]:
                     l = mid+1
                 else:
                     r = mid-1
             
             else:
-                # right sorted
-                
-                if target < arr[mid] or target > arr[r]:
-                    r = mid-1
+                # we are in right sorted part
+                if target < nums[mid] or target >nums[r]:
+                    r = mid - 1
                 else:
-                    l = mid+1
-            
-            
+                    l = mid + 1
         
         return -1
+        
         
