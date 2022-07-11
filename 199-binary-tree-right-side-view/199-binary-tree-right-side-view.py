@@ -9,29 +9,31 @@ class Solution:
         
         ans = []
         
-        q = []
+        if not root:
+            return []
         
-        if(root):
-            q.append(root)
-            
-        while(len(q)!=0):
+        q = []
+        q.append(root)
+        
+        while len(q)!=0:
             
             n = len(q)
-            
             
             for i in range(n):
                 
                 curr = q[0]
                 q.pop(0)
                 
+                
                 if i==n-1:
                     ans.append(curr.val)
                 
-                if(curr.left):
+                if curr.left:
                     q.append(curr.left)
                 
-                if(curr.right):
+                if curr.right:
                     q.append(curr.right)
         
-        
         return ans
+            
+        
