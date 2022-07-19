@@ -14,9 +14,7 @@ class Solution:
                 
                 temp[i][j] = temp[i-1][j]+temp[i-1][j-1]
             
-            
             # ans.append(temp)
-        
         return temp
                 
                 
