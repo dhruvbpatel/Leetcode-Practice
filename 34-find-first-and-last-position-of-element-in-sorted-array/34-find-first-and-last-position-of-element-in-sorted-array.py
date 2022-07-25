@@ -14,7 +14,7 @@ class Solution:
                 #find lowerbound
                 if findLB == True:
                     
-                    if mid==l or nums[mid-1]!=target:
+                    if mid==l or nums[mid-1]!=target:  ## if mid index is l or at edge return
                         return mid
                     else:
                         r = mid-1 # as lower bound search in right
