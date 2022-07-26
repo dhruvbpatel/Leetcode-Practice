@@ -2,8 +2,7 @@ class Solution:
     
     def mark_curr(self,grid,i,j,nrow,ncol):
         
-        # if(grid[i][j]=="2") return;
-        
+
         if(i<0 or i>=nrow or j<0 or j>=ncol or grid[i][j]!='1'):
             return
         
@@ -22,8 +21,7 @@ class Solution:
         ncol = len(grid[0])
         
         num_island = 0
-        
-        
+
         for i in range(nrow):
             for j in range(ncol):
                 if(grid[i][j]=="1"):
