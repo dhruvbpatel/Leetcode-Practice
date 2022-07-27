@@ -32,6 +32,33 @@ class Solution:
         Do not return anything, modify root in-place instead.
         """
         
-        self.solve(root)
+        # self.solve(root) #recursive approach
+        
+        # o(1) space , morris traversal modified
+        
+        if not root:
+            return None
+        
+        node = root
+        
+        while node:
+            
+            #if left child is there
+            if node.left:
+                
+                #find rightmost of left subtree of node
+                rightmost = node.left
+                
+                while rightmost.right:
+                    rightmost = rightmost.right
+                
+                #rewire connection
+                
+                rightmost.right = node.right
+                node.right = node.left
+                node.left = None
+            
+            #move to right node 
+            node = node.right
         
         
