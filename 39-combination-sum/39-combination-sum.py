@@ -15,9 +15,7 @@ class Solution:
             temp.pop()
         
         self.solve(idx+1,target,nums,temp,ans);
-            
-            
-    
+
     def combinationSum(self, nums: List[int], target: int) -> List[List[int]]:
         idx = 0
         temp = []
