@@ -34,7 +34,7 @@ class Solution:
     
         
         
-    def countVowelPermutation(self, n: int) -> int:
+    # def countVowelPermutation(self, n: int) -> int:
         
         #recursive sol
 #         vowels = ["a","e","i","o","u"]
@@ -50,33 +50,48 @@ class Solution:
 
         #DP sol
         
-        dp = [[0 for i in range(5)] for i in range(n)]
+#         dp = [[0 for i in range(5)] for i in range(n)]
         
-        #fill dp
-        for i in range(5):
-            dp[0][i] = 1
+#         #fill dp
+#         for i in range(5):
+#             dp[0][i] = 1
         
-        for row in range(1,n):
-            for col in range(5):
+#         for row in range(1,n):
+#             for col in range(5):
                 
-                if col==0:
-                    dp[row][col]=(dp[row-1][1]+dp[row-1][2]+dp[row-1][4])%(1000000007)
+#                 if col==0:
+#                     dp[row][col]=(dp[row-1][1]+dp[row-1][2]+dp[row-1][4])%(1000000007)
                     
                 
-                if col==1:
-                    dp[row][col] = (dp[row-1][0]+dp[row-1][2])%(1000000007)
+#                 if col==1:
+#                     dp[row][col] = (dp[row-1][0]+dp[row-1][2])%(1000000007)
                     
-                if col==2:
-                    dp[row][col] = (dp[row-1][1]+dp[row-1][3])%(1000000007)
+#                 if col==2:
+#                     dp[row][col] = (dp[row-1][1]+dp[row-1][3])%(1000000007)
                 
-                if col==3:
-                    dp[row][col] = (dp[row-1][2])%(1000000007)
+#                 if col==3:
+#                     dp[row][col] = (dp[row-1][2])%(1000000007)
                 
-                if col==4:
-                    dp[row][col] = (dp[row-1][2]+dp[row-1][3])%(1000000007)
+#                 if col==4:
+#                     dp[row][col] = (dp[row-1][2]+dp[row-1][3])%(1000000007)
         
         
         
-        return sum(dp[n-1])%(1000000007)
+#         return sum(dp[n-1])%(1000000007)
+        
+    
+    #space optimized with using only variables
+    def countVowelPermutation(self, n: int) -> int:
+        a = e = i = o = u = 1
+        mod = 10 ** 9 + 7
+        for _ in range(2, n + 1):
+            
+             a, e, i, o, u = (e + u + i) % mod, (a + i) % mod, (e + o) % mod, i, (o + i) % mod 
+                
+        return sum([a, e, i, o, u]) % mod  
+
+        
+    
+    
         
         
