@@ -32,22 +32,25 @@ class Solution:
         
         for i in range(len(s)-len(p)+1):
             
-            if pd==sd:
+            if pd==sd: #check is window dict is same then add index
                 ans.append(i)
             
             # print(sd,"start: ",start,"end: ",end)
             
+            # delete start window pointer in counter if count == 1
             if sd[s[start]]==1:
                 del sd[s[start]]
-            else:
-                sd[s[start]]-=1
+            else: 
+                sd[s[start]]-=1 #else decrease count
                 
-            start+=1
+            start+=1 #update pointer
             end+=1
             
+            # if end is out of bound, break
             if end>=len(s):
                 break
             
+            # update end pointer
             sd[s[end]]+=1
             
             
