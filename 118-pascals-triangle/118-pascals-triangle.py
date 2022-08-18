@@ -1,24 +1,24 @@
 class Solution:
-    def generate(self, n: int) -> List[List[int]]:
+    def generate(self, numRows: int) -> List[List[int]]:
         
-        temp = [[0] for _ in range(n)]
+        ans =[]
         
-        for i in range(n):
+        temp = [1]
+        ans.append(temp)
+        
+        
+        for i in range(1,numRows):
             
-            temp[i] = [0]*(i+1)
+            temp = [1]*(i+1)
             
-            temp[i][0] = 1
-            temp[i][i] = 1
             
             for j in range(1,i):
-                
-                temp[i][j] = temp[i-1][j]+temp[i-1][j-1]
+                temp[j] = ans[i-1][j-1] + ans[i-1][j]
             
-            # ans.append(temp)
-        return temp
-                
-                
-                
-                
+            
+            ans.append(temp)
+        
+        return ans
+            
             
         
