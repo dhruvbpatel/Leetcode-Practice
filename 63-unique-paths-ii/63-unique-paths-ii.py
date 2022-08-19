@@ -25,9 +25,6 @@ class Solution:
         for r in range(1,m):
             for c in range(1,n):
                 
-                up = 0
-                down = 0
-                
                 if grid[r][c]==1:
                     continue
                 
