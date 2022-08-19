@@ -4,32 +4,37 @@ class Solution:
         m = len(grid)
         n = len(grid[0])
         
+        if grid[0][0]==1:
+            return 0
+        
         dp = [[0]*n for _ in range(m)]
         
-        for i in range(m):
-            for j in range(n):
+        
+        for r in range(m):
+            if grid[r][0]==1:
+                break
+            else:
+                dp[r][0]=1
+        
+        for c in range(n):
+            if grid[0][c]==1:
+                break
+            else:
+                dp[0][c]=1
+        
+        for r in range(1,m):
+            for c in range(1,n):
                 
-                if grid[i][j]==1:
-                    dp[i][j]=0
+                up = 0
+                down = 0
                 
-                elif i==0 and j==0:
-                    dp[i][j]=1
+                if grid[r][c]==1:
+                    continue
                 
-                else:
-                    up =0
-                    left = 0
-                    
-                    if(i>0):
-                        up = dp[i-1][j]
-                    if(j>0):
-                        left = dp[i][j-1]
-                    
-                    dp[i][j]=(up+left)
+                dp[r][c]=dp[r-1][c]+dp[r][c-1]
+    
         
         return dp[m-1][n-1]
-                
-                
-                
         
         
-        
+                
