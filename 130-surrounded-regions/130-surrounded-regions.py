@@ -17,10 +17,11 @@ class Solution:
         Do not return anything, modify board in-place instead.
         """
         
-        ##task:
+        ##task: think it reversely
+        
         # 1) capture unsurounded border regions (o->t)
         # 2) capture all remaining region in between (o->X)
-        # 3) uncapture border region
+        # 3) uncapture border region (t->o)
           
         
         nrow = len(board)
