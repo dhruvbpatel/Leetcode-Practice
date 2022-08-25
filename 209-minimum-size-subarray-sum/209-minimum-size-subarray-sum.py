@@ -1,5 +1,6 @@
 class Solution:
     def minSubArrayLen(self, target: int, nums: List[int]) -> int:
+              
         
         ans = sys.maxsize
         l = 0
@@ -15,5 +16,6 @@ class Solution:
             
         return ans if ans is not sys.maxsize else 0
         
-                
+        #time: O(n) #inner loop runs for 1 time in avg case till smaller sum is obtained
+        
         
