@@ -1,38 +1,46 @@
 class Solution:
     
-    def dfs(self,board,word,r,c,visited,wp,nrows,ncols):
+    def find(self,board,word,wp,i,j,m,n,visited):
         
-        if(wp==len(word)):
+        if wp==len(word):
             return True
         
-        if(r<0 or r>=nrows or c>ncols-1 or c<0 or board[r][c]!=word[wp] or visited[r][c]==-1):
+        if i<0 or j<0 or i>=m or j>=n or board[i][j]!=word[wp] or visited[i][j]==-1:
             return False
         
-        visited[r][c]=-1
+        visited[i][j]=-1
         
-        ans =(self.dfs(board,word,r+1,c,visited,wp+1,nrows,ncols) or
-            self.dfs(board,word,r,c+1,visited,wp+1,nrows,ncols) or
-            self.dfs(board,word,r-1,c,visited,wp+1,nrows,ncols) or
-            self.dfs(board,word,r,c-1,visited,wp+1,nrows,ncols) )
+        ans = (
+            self.find(board,word,wp+1,i+1,j,m,n,visited) or
+            self.find(board,word,wp+1,i,j+1,m,n,visited) or
+            self.find(board,word,wp+1,i,j-1,m,n,visited) or
+            self.find(board,word,wp+1,i-1,j,m,n,visited)
+        )
         
-        visited[r][c]=0
+        visited[i][j]=0
         
         return ans
-        
+    
     
     def exist(self, board: List[List[str]], word: str) -> bool:
-        nrows= len(board)
-        ncols = len(board[0])
+        m = len(board)
+        n = len(board[0])
         
-        visited =[[0]*ncols for i in range(nrows)]
         wp = 0
         
+        visited = [[0]*n for _ in range(m)]
         
+        for i in range(m):
+            for j in range(n):
+                
+                if board[i][j]==word[0]:
+                    
+                    if(self.find(board,word,wp,i,j,m,n,visited)):
+                        return True
         
-        for i in range(nrows):
-            for j in range(ncols):
-                if(self.dfs(board,word,i,j,visited,wp,nrows,ncols)):
-                    return True
-
         return False
+    
+                    
+                    
+    
         
