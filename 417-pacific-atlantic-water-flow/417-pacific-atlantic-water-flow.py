@@ -46,6 +46,7 @@ class Solution:
                     ans.append([r,c])
         return ans
                     
-                    
+        ##overal TC -> O(NM)
+        
         
         
