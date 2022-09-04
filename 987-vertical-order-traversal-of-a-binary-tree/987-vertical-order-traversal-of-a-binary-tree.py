@@ -13,8 +13,6 @@ class Solution:
         # node,vertical-level, depth-level
         #node,v,l
         
-        
-        
         while(len(q)!=0):
             
             curr = q[0]
