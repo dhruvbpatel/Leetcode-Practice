@@ -15,6 +15,6 @@ class Solution:
         for k,v in mp.items():
             if v!=0:
                 return False
-        return True
         
+        return True
         
