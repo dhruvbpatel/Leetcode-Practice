@@ -1,18 +1,17 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        ans = []
-        mp = {}
         
+        mp = defaultdict(int)
+        ans = []
         for i in range(len(nums)):
-            curr = target-nums[i]
             
-            if curr in mp:
+            find = target-nums[i]
+            
+            if find in mp.keys():
                 ans.append(i)
-                ans.append(mp[curr])
+                ans.append(mp[find])
                 return ans
             
-            else:
-                
-                mp[nums[i]]=i
-    
-        return ans
+            mp[nums[i]]=i
+        
+        
