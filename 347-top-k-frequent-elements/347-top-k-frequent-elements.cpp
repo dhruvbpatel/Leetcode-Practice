@@ -2,7 +2,10 @@ class Solution {
 public:
     typedef pair<int,int> pi;
     
+    
     vector<int> topKFrequent(vector<int>& nums, int k) {
+    
+               
         
         unordered_map<int,int> mp;
         
@@ -14,7 +17,7 @@ public:
         for(auto it:nums)
             mp[it]+=1;
         
-        priority_queue<pi,vector<pi>,greater<pi>> pq; // min heap
+        priority_queue<pi,vector<pi>,greater<pi>> pq; // min heap 
         
         for(auto it=mp.begin();it!=mp.end();it++){
             
