@@ -10,7 +10,7 @@ class Solution:
         for it in arr:
             
             if it[0]<=temp[1]:
-                temp[1]=max(it[1],temp[1])
+                temp[1] = max(it[1],temp[1])
             else:
                 ans.append(temp)
                 temp = it
@@ -18,4 +18,4 @@ class Solution:
         ans.append(temp)
         
         return ans
-        
+    
