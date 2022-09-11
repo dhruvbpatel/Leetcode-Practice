@@ -21,8 +21,9 @@ class Solution:
         
 #         return ans
             
-    # optimize time: O(n)
-        mp = [-1]*256
+    # optimize time: O(n) space: o(256)
+    
+        mp = [-1]*256 # frequency array 
         left = 0
         right = 0
         count = 0
@@ -32,9 +33,9 @@ class Solution:
             if(mp[ord(s[right])]!=-1):
                 ## if exist in map
                 #update left only if repeating char is on right side of left index, else no point
-                left = max(left,mp[ord(s[right])]+1) # if on right side update left pointer
+                left = max(mp[ord(s[right])]+1,left) # if on right side update left pointer
 
-            mp[ord(s[right])]=right
+            mp[ord(s[right])]=right  
 
             count = max(count,right-left+1)
             right+=1
