@@ -35,7 +35,7 @@ class Solution:
             if l==r:
                 ans = max(ans,2*r)
             
-            elif r>=l:
+            elif r>l:
                 l,r=0,0
         
         #right traverse
