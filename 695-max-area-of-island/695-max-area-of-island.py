@@ -1,7 +1,7 @@
 class Solution:
     
-    
-    def getArea(self,grid,nrow,ncol,r,c,area,max_area):
+
+    def getArea(self,grid,nrow,ncol,r,c,area):
         
         if r<0 or r>=nrow or c<0 or c>=ncol or grid[r][c]!=1:
             return
@@ -10,10 +10,10 @@ class Solution:
         
         self.area+=1
         
-        self.getArea(grid,nrow,ncol,r,c+1,self.area,max_area)
-        self.getArea(grid,nrow,ncol,r+1,c,self.area,max_area)
-        self.getArea(grid,nrow,ncol,r,c-1,self.area,max_area)
-        self.getArea(grid,nrow,ncol,r-1,c,self.area,max_area)
+        self.getArea(grid,nrow,ncol,r,c+1,self.area)
+        self.getArea(grid,nrow,ncol,r+1,c,self.area)
+        self.getArea(grid,nrow,ncol,r,c-1,self.area)
+        self.getArea(grid,nrow,ncol,r-1,c,self.area)
         
         return
         
@@ -30,7 +30,7 @@ class Solution:
                 
                 if grid[r][c]==1:
                     self.area = 0
-                    self.getArea(grid,nrow,ncol,r,c,self.area,max_area)
+                    self.getArea(grid,nrow,ncol,r,c,self.area)
                     max_area = max(max_area,self.area)
                     self.area = 0
         
