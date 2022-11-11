@@ -3,7 +3,7 @@
 from typing import List
 class Solution:
     
-    
+    #bfs algo
     def detect(self,adj,visited,curr):
         
         visited[curr]=1
@@ -25,6 +25,21 @@ class Solution:
         return False
         
     
+    def dfs(self,adj,visited,curr,parent):
+        
+        visited[curr]=1
+        
+        for adjnode in adj[curr]:
+            if visited[adjnode]==0:
+                if self.dfs(adj,visited,adjnode,curr):
+                    return True
+            elif parent!=adjnode:
+                return True
+        
+        return False
+                
+                
+    
     
     #Function to detect cycle in an undirected graph.
 	def isCycle(self, V: int, adj: List[List[int]]) -> bool:
@@ -34,8 +49,10 @@ class Solution:
 		
 		for i in range(V):
 		    if visited[i]==0:
-		        if self.detect(adj,visited,i):
-		            return True
+		      #  if self.detect(adj,visited,i):
+		      #      return True
+		      if self.dfs(adj,visited,i,-1):
+		          return True
 		
 		return False
 
