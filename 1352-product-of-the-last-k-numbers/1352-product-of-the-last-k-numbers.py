@@ -1,4 +1,16 @@
 class ProductOfNumbers:
+    
+     # Purpose: imp. product of the last k numbers in an array
+    # Method: 
+    # Intuition: obtain cumulative product from end to start with zero-restart
+    
+    # Explanation: 
+    # Action    Arr              cur             self.pro
+    # add(3)    [3]              [1*3=3]         [3] # append
+    # add(0)    [3,0]            [1]             [1] # restart
+    # add(2)    [3,0,2]          [1*2=2]         [1,2] # append
+    # add(5)    [3,0,2,5]        [2*5=10]        [1,2,10] # append
+    # add(4)    [3,0,2,5,4]      [10*4=40]       [1,2,10,40] # append
 
     def __init__(self):
         
