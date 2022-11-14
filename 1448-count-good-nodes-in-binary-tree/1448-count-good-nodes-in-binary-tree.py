@@ -6,7 +6,7 @@
 #         self.right = right
 class Solution:
     
-    def helper(self,root,good,currmax):
+    def helper(self,root,currmax):
         
         if root is None:
             return
@@ -15,8 +15,8 @@ class Solution:
             self.good+=1
             currmax = max(currmax,root.val)
 
-        self.helper(root.left,self.good,currmax)
-        self.helper(root.right,self.good,currmax)
+        self.helper(root.left,currmax)
+        self.helper(root.right,currmax)
         
         return
             
@@ -30,6 +30,6 @@ class Solution:
         
         self.good = 0
         currmax = root.val
-        self.helper(root,self.good,currmax)
+        self.helper(root,currmax)
         return self.good
         
