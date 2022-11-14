@@ -5,9 +5,8 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def isCousins(self, root: Optional[TreeNode], x: int, y: int) -> bool:
-        
-        def helper(root,d,parent):
+    
+    def checkSweetHomeAlabama(self,root,d,parent,x,y):
             
             if root is None:
                 return
@@ -20,22 +19,23 @@ class Solution:
                 self.y = [d,parent]
                 return
             
-            helper(root.left,d+1,root)
-            helper(root.right,d+1,root)
+            self.checkSweetHomeAlabama(root.left,d+1,root,x,y)
+            self.checkSweetHomeAlabama(root.right,d+1,root,x,y)
             
             return
-        
+    
+    def isCousins(self, root: Optional[TreeNode], x: int, y: int) -> bool:
         
         if x==y:
             return False
     
-        
+        # stores depth and parent 
         self.x = [-1,None]
         self.y = [-1,None]
         
-        helper(root,0,None)
+        self.checkSweetHomeAlabama(root,0,None,x,y)
         
-        if self.x[0]!=-1 and self.x[0]==self.y[0] and self.x[1]!=self.y[1]:
+        if self.x[0]!=-1 and self.x[0]==self.y[0] and self.x[1]!=self.y[1]: #check necessary conditions for being cousins
             return True
         
         return False
