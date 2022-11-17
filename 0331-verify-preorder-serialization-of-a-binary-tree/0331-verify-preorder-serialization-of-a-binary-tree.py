@@ -3,15 +3,24 @@ class Solution:
         
         slots = 1
         
-        for node in preorder.split(','):
+        prev = None
+        
+        for ch in preorder:
             
-            slots-=1
+            if ch==',':
+                
+                slots-=1
+                
+                if slots<0:
+                    return False
+                
+                if prev!='#':
+                    slots+=2
             
-            if slots<0:
-                return False
-            
-            if node!='#':
-                slots+=2
-            
+            prev = ch
+        
+        #for last node
+        slots = slots+1 if ch!='#' else slots-1
         
         return slots==0
+        
