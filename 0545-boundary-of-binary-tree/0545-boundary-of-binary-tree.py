@@ -21,9 +21,7 @@ class Solution:
         
     
     def isLeaf(self,root):
-        # if root is None:
-        #     return False
-        
+                
         if root.left is None and root.right is None:
             return True
         
