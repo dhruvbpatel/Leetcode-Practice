@@ -4,6 +4,9 @@ class Solution:
         Do not return anything, modify rooms in-place instead.
         """
         
+        #same code as 01 matrix just handle for obstacle
+        
+        
         m = len(mat)
         n = len(mat[0])
         
@@ -12,9 +15,7 @@ class Solution:
         # ans = [[0]*n for _ in range(m)]
         
         q = []
-        
-        
-        
+
         #add all 0 in queue
         for r in range(m):
             for c in range(n):
