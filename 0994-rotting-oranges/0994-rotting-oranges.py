@@ -22,13 +22,6 @@ class Solution:
                 if grid[r][c]==1:
                     count_fresh+=1
         
-        
-        # if len(q)==0: #if no rotten oranges in grid
-        #     return -1
-        
-        # if count_fresh==0:
-        #     return -1
-        
         mx_time = 0
         
         drow = [-1,0,1,0]
@@ -53,16 +46,10 @@ class Solution:
                     visited[nr][nc]=2 #pushing fresh oranges in q
                     cnt+=1
         
-        if cnt!=count_fresh:
-            
-            if count_fresh==0:
+        #check count of fresh orange traversed 
+        if cnt!=count_fresh: #if not all fresh orange are traversed 
+            if count_fresh==0: #if count ==0 return 0
                 return 0
-            
-            return -1
-    
-        # for i in range(m):
-        #     for j in range(n):
-        #         if visited[i][j]!=2 and grid[i][j]==1:
-        #             return -1
+            return -1 #some fresh orange not traversed so return -1
         
         return mx_time
