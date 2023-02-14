@@ -19,17 +19,29 @@ class Solution:
             
             curr+=(carry)
             
-            if curr==3:
+            
+            
+            if curr%2==1:
                 ans="1"+ans
-                carry = 1
-            elif curr==2:
+                
+                if curr==3:
+                    carry = 1
+                else:
+                    carry = 0
+                
+            elif curr%2==0:
                 ans="0"+ans
-                carry = 1
-            elif curr==1:
-                ans="1"+ans
-                carry = 0
-            else:
-                ans="0"+ans
+                
+                if curr==2:                
+                    carry = 1
+                else:
+                    carry = 0
+                    
+            # elif curr==1:
+            #     ans="1"+ans
+            #     carry = 0
+            # else:
+            #     ans="0"+ans
                 
             curr = 0
             
