@@ -1,23 +1,27 @@
 class Solution:
     def countSubarrays(self, nums: List[int], minK: int, maxK: int) -> int:
-# min_position, max_position: the MOST RECENT positions of minK and maxK.
-        # left_bound: the MOST RECENT value outside the range [minK, maxK].
-        ans = 0
-        min_position = max_position = left_bound = -1
-       # Iterate over nums, for each number at index i:
-        for i, number in enumerate(nums):
-            # If the number is outside the range [minK, maxK], update the most recent left_bound.
-            if number < minK or number > maxK:
-                left_bound = i
-                
-            # If the number is minK or maxK, update the most recent position.
-            if number == minK:
-                min_position = i
-            if number == maxK:
-                max_position = i
-                
-            # The number of valid subarrays equals the number of elements between left_bound and 
-            # the smaller of the two most recent positions.
-            ans += max(0, min(min_position, max_position) - left_bound)
+        min_pos = max_pos = -1
+        last_left_out_bound_pos = -1 # idx - start for calculation
+
+        res = 0
+        for i, num in enumerate(nums):
+            if num < minK or num > maxK:
+                last_left_out_bound_pos = i
             
-        return ans
+            if num == minK:
+                min_pos = i
+            
+            if num == maxK:
+                max_pos = i
+            
+            """
+                last_left_out_bound_pos - begin idx subarray
+                example 7 0 0 0 1 5 -> 0 0 0 1 5 and 0 0 1 5 and 0 1 5 and 1 5 = 4 res
+
+                so, for escaping such brute force we can calculate min pos (in example it is idx = 4, it is min_elem idx or max_elem_idx)
+                min(min_pos, max_pos) begin idx of valid subarray - two cases: 1 2 3 4 5 and 5 4 3 2 1
+            """
+            res += max(0, min(min_pos, max_pos) - last_left_out_bound_pos)
+        
+        return res
+        
