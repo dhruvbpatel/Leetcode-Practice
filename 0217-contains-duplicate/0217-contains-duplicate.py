@@ -1,13 +1,11 @@
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
         
-        mp = defaultdict(int)
+        st = set()
         
-        for n in nums:
-            
-            if n not in mp:
-                mp[n]+=1
-            else:
+        for ele in nums:
+            if ele in st:
                 return True
-            
+            st.add(ele)
+        
         return False
