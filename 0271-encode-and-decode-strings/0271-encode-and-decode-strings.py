@@ -6,10 +6,13 @@ class Codec:
         ans = ""
         
         for s in strs:
-            ans+= str(len(s))+'#'+s
-        
-        # print(ans)
+            
+            n = len(s)
+            ans+=str(n)+'#'+s
+            
+        print(ans)
         return ans
+                
         
 
     def decode(self, s: str) -> List[str]:
@@ -20,21 +23,27 @@ class Codec:
         
         idx = 0
         
-        while idx<len(s):
-            
+        while(idx<len(s)):
             j = idx
             
-            while s[j]!='#':
+            while s[j]!='#':  #case for handling more than 1 digit number length
                 j+=1
             
-            n = int(s[idx:j])
-            j = j+1
+            n = int(s[idx:j]) # get length
             
-            curr = s[j:j+n]
-            ans.append(curr)
-            idx = j+n
+            j = j+1 # skip # char
+            
+            curr = s[j:j+n] ## get word
+            ans.append(curr) #append
+            idx = j+n # update idx
         
         return ans
+            
+            
+            
+            
+        
+        
         
 
 
