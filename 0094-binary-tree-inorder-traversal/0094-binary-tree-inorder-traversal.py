@@ -7,6 +7,7 @@
 class Solution:
     def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
         
+        #morris traversal
         curr = root
         ans = []
         
