@@ -1,6 +1,10 @@
 class Solution:
     def validTree(self, n: int, edges: List[List[int]]) -> bool:
         
+        #for it to be a valid tree, we need to have n-1 edges otherwise it will be cycle
+        # and it should not be disconnected, for this we do bfs and mark all visited
+        # if any is left then len(visit)!=n thus disconnected and not tree
+        
         if len(edges)!=n-1:
             return False
         
